@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<sdd:document name="SIRS" key-start="110" key-end="114"
+			  description="Mapeamento SIRS"
+              xmlns:sdd="http://www.auster.com.br/udd/TaggedFileReader/"
+              descriptor-version="1.0.1"
+              descriptor-date="2004/06/05"
+              descriptor-author="TTI Technologies"
+              encoding-from="ISO-8859-1"
+              max-record-size="32768"
+              buffer-size="262144"
+              separator-char="\n">
+
+  <sdd:key-definition>
+    <sdd:attribute name="key" start="110" end="114"/>
+  </sdd:key-definition>
+		
+	<sdd:key start-key="010D" end-key="999D" name="CYCLE_SUMMARY" description="Sumário Geral">
+		<attribute name="AccountNumber"      	start="1"    	size="15"/>
+		<attribute name="LanguageInd"		 	start="127"	 	size="5"/>
+		<attribute name="BaseCurrencyCode"     	start="132"	 	size="4"/>
+		<attribute name="InvCurrencyCode"    	start="136"	 	size="4"/>
+		<attribute name="LeafLevelCSA"        	start="140"	 	size="10"/>
+		<attribute name="NoOfCopies"  	      	start="150"	 	size="2"/>
+		<attribute name="CycleCode"		      	start="152"	 	size="2"/>
+		<attribute name="CycleEndDate"        	start="154"	 	size="8"/>
+		<attribute name="CustTypeInd"         	start="162"	 	size="1"/>
+		<attribute name="InitialBillInd"     	start="163"	 	size="1"/>
+		<attribute name="FinalBillInd"       	start="164"	 	size="1"/>
+		<attribute name="DetailBillInd"      	start="165"  	size="1"/>
+		<attribute name="PrintCallDetailInd" 	start="166"  	size="1"/>
+		<attribute name="DueUponReceipt"     	start="167"	 	size="1"/>
+		<attribute name="AccountSubType"     	start="168"	 	size="1"/>
+		<attribute name="BillFormatInd"      	start="169"	 	size="3"/>
+		<attribute name="CreditClassRestrict" 	start="172"	 	size="1"/>
+		<attribute name="NoOfSubscriptions"  	start="173"	 	size="5"/>
+		<attribute name="BillingDate"        	start="178"	 	size="8"/>
+		<attribute name="FinalBillLine"      	start="186"		size="10"/>
+		<attribute name="DueDate"           	start="196"  	size="8"/>
+		<attribute name="PreviousBalance"   	start="204"  	size="14"/>
+		<attribute name="PaymentsTotal"     	start="232"  	size="14"/>
+		<attribute name="AdjustmentsTotal"  	start="260"  	size="14"/>
+		<attribute name="PastDueBalanceAmt" 	start="288"  	size="14"/>
+		<attribute name="AdvancedPayment"		start="316"  	size="14"/>
+		<attribute name="PenaltyTotal"      	start="344" 	size="14"/>
+		<attribute name="MonthlyServiceAmt" 	start="372" 	size="14"/>
+		<attribute name="MonthlyStartDate"		start="400" 	size="8"/>
+		<attribute name="MonthlyEndDate"		start="408" 	size="8"/>
+		<attribute name="StateTaxAmount"    	start="598"  	size="14"/>
+		<attribute name="CurrentChargesAmt" 	start="738"  	size="14"/>
+		<attribute name="TotalAmtDue"       	start="850"  	size="14"/>
+		<attribute name="HeldBillInd"       	start="912"  	size="1"/>
+		<attribute name="InsertTrayCode"     	start="913"  	size="15"/>
+		<attribute name="DirDebitMsgInd"     	start="953"  	size="1"/>
+		<attribute name="PreDebitInd"   		start="954"  	size="1"/>
+		<attribute name="HeldBillReason"    	start="985"  	size="2"/>
+		<attribute name="MonthlySVCEqpAmt"   	start="1080"  	size="14"/>
+		<attribute name="MinActiveSubLines"  	start="1151"  	size="7"/>
+		<attribute name="MinCommitSubsLines" 	start="1158"  	size="7"/>
+		<attribute name="MinCommitInd"		 	start="1165"  	size="1"/>
+		<attribute name="InterstTotal"      	start="1177" 	size="14"/>
+		<attribute name="MonthlyInstmnt"    	start="1233" 	size="14"/>
+		<attribute name="StateTaxPercent"   	start="1271" 	size="2"/>
+		<attribute name="TaxableAmount"     	start="1273" 	size="14"/>
+		<attribute name="DirectDebitDigit"  	start="1329" 	size="1"/>
+		<attribute name="PrevAdjBalance"    	start="1392"	size="14"/>
+		<attribute name="MonthCharges"      	start="1422" 	size="14"/>
+		<attribute name="TotalAmtDue"       	start="1452" 	size="14"/>
+		<attribute name="InvoiceCFOP"       	start="2053" 	size="5"/>
+
+		<sdd:key start-key="011D" name="BILLING_ADDRESS" description="Informações do Cliente">
+			<attribute name="CustomerName" start="127" size="95"/>
+			<attribute name="AddressLine1" start="222" size="95"/>
+			<attribute name="AddressLine2" start="317" size="95"/>
+			<attribute name="AddressLine3" start="412" size="95"/>
+			<attribute name="AddressLine4" start="507" size="95"/>
+			<attribute name="AddressLine5" start="602" size="95"/>
+			<attribute name="PostalCode"   start="792" size="18"/>
+			<attribute name="CustomerID1"  start="810" size="40"/>
+			<attribute name="CustomerID2"  start="850" size="40"/>
+		</sdd:key>
+
+	<!--
+
+		<sdd:key start-key="020D" name="BARCODE_LINE"  info="MERDA" description="Código de Barras">
+			<attribute name="OcrScanLine" start="127" size="55"/>
+			<attribute name="BarCodeLine"     start="237" size="200"/>
+		</sdd:key>
+
+		<sdd:key start-key="025D" name="BILL_MESSAGES" description="Mensagens da Fatura">
+			<attribute name="MessageText" 	start="127" size="60"/>
+			<attribute name="MessageSeqNo" 	start="187" size="3"/>
+			<attribute name="MessageID" 	start="190" size="5"/>
+		</sdd:key>
+
+		<sdd:key start-key="030D" name="ADDITIONAL_BILL_MESSAGES" description="Mensagens Adicionais" ignorable="yes"/>
+
+-->
+		<sdd:key start-key="040T" name="PAYMENTS_TOTAL" description="Pagamentos Realizados" ignorable="yes">
+			<attribute name="Amount" 		start="127" size="14"/>
+			<attribute name="TotPaymentAppliedCurrent" 		start="155" size="14"/>
+			<attribute name="TotPaymentAssignedPrevious"	start="169" size="14"/>
+			<attribute name="TotPaymentAssignedCurrent" 	start="183" size="14"/>
+			<attribute name="TotPaymentUnassigned" 			start="197" size="14"/>
+
+			<sdd:key start-key="040N"  name="SUBTOTAL_PAYMENT_AMOUNTS" description="Valores Pagos-Subtotal">
+				<attribute name="SubTotalPreviousInv" 	start="127" size="14"/>
+				<attribute name="SubTotalCurrentInv" 	start="141" size="14"/>
+				<attribute name="SubTotalUnassigned" 	start="155" size="14"/>
+
+
+				<sdd:key start-key="040K" name="PAYMENT_SUMMARY" description="Sumário dos Pagamentos">
+					<attribute name="AssignedCurrentInd" 	start="127" size="1"/>
+					<attribute name="DocumentIDReference" 	start="128" size="8"/>
+					<attribute name="ReceivableDescription"	start="136" size="40"/>
+					<attribute name="PaymentAssignedDate" 	start="176" size="8"/>
+					<attribute name="ReceivableIssueDate" 	start="184" size="8"/>
+					<attribute name="PaymentAssignedAmt" 	start="192" size="14"/>
+					<attribute name="PaymentAssignedRevInd" start="206" size="1"/>
+					<attribute name="PaymentReversalDate" 	start="207" size="8"/>
+					<attribute name="PaymentReversalReason" start="215" size="40"/>
+				</sdd:key>
+
+				<sdd:key start-key="040H" name="PAYMENT_HEADER" description="Payment Header">
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="040D" name="PAYMENTS_DETAIL" description="Detalhamento dos Pagamentos">
+				<attribute name="ItemNO" 				start="127" size="4"/>
+				<attribute name="DataElemento" 		start="131" size="8"/>
+				<attribute name="PaymentAmt" 			start="139" size="14"/>
+				<attribute name="InvPaymentAmt" 		start="153" size="14"/>
+				<attribute name="PaymentCurrencyCode" 	start="167" size="4"/>
+				<attribute name="AppliedtoCurrentInd" 	start="171" size="1"/>
+				<attribute name="PaymentAppliedCurrent"	start="172" size="14"/>
+				<attribute name="UnassignedPaymentAmt" 	start="186" size="14"/>
+				<attribute name="PaymentAssignedRevInd" start="200" size="1"/>
+				<attribute name="PaymentReversedDate" 	start="201" size="8"/>
+				<attribute name="PaymentReversedReason" start="209" size="40"/>
+			</sdd:key>
+				
+		</sdd:key>
+
+		<sdd:key start-key="050T" name="LATE_FEE_TOTAL" label="Multas por Atraso" ignorable="yes">
+			<sdd:attribute name="Amount"      start="155"  size="14"/>
+			<sdd:key start-key="050D" name="LATE_FEE_DETAIL" description="Detalhes de Juros e Multas por Atraso" >
+				<sdd:attribute name="Amount"      start="127"  size="14"/>
+				<sdd:attribute name="Descricao"   start="155"  size="30"/>
+			</sdd:key>
+		</sdd:key>
+
+		<sdd:key start-key="055T" name="OIA_ADJUSTMENTS" description="Ajustes" ignorable="yes">
+			<attribute name="TotalAdjustment" 					start="127" size="14"/>
+			<attribute name="CRAdjustmentAppliedCurrent" 		start="155" size="14"/>
+			<attribute name="DBAdjustmentAppliedCurrent" 		start="169" size="14"/>
+			<attribute name="TotADJPreviousMonthReceivables" 	start="197" size="14"/>
+			<sdd:key start-key="055N" end-key="055H" name="OIA_ADJUSTMENTS_TOTAL" description="Subtotal de Ajustes">
+				<attribute name="SubTotalAssignedPrevious" 	start="127" size="14"/>
+				<attribute name="SubTotalAssignedCurrent" 	start="141" size="14"/>
+				<attribute name="SubTotalUnassigned" 		start="155" size="14"/>
+				<sdd:key start-key="055K" name="OIA_ADJUSTMENTS_DETAIL" description="Detalhes de Ajustes">
+					<attribute name="AssignedCurrentInd" 		start="127" size="1"/>
+					<attribute name="DocumentID" 				start="128" size="8"/>
+					<attribute name="ReceivablesDescription"	start="136" size="40"/>
+					<attribute name="ADJAssignmentDate" 		start="176" size="8"/>
+					<attribute name="ReceivableIssueDate" 		start="184" size="8"/>
+					<attribute name="ADJAssignmentAmt" 			start="192" size="14"/>
+					<attribute name="CreditAssignReversedInd" 	start="206" size="1"/>
+					<attribute name="CreditAssignReversedDate" 	start="207" size="8"/>
+					<attribute name="CreditAssignReversedReason"	start="215" size="40"/>
+				</sdd:key>
+			</sdd:key>
+		</sdd:key>
+
+		<sdd:key start-key="060T" name="LATE_INTEREST_TOTAL" label="Juros por Atraso" ignorable="yes">
+			<sdd:attribute name="Amount"      start="155"  size="14"/>
+			<sdd:key start-key="060D" name="LATE_INTEREST_DETAIL" description="Detalhes de Juros por Atraso">
+				<sdd:attribute name="Amount"      start="127"  size="14"/>
+				<sdd:attribute name="Descricao"   start="155"  size="30"/>
+			</sdd:key>
+		</sdd:key>
+
+		<sdd:key start-key="070T" name="ADJUSTMENTS_TOTAL" label="Parcelamento de Débitos" ignorable="yes">
+			<sdd:attribute name="Amount"      start="127"  size="14"/>
+			<sdd:key start-key="070D" name="ADJUSTMENTS_DETAIL" description="Detalhes de Ajustes">
+				<sdd:attribute name="DataElemento"        start="131"  size="8"/>
+				<sdd:attribute name="Descricao"   start="139"  size="30"/>
+				<sdd:attribute name="Amount"      start="169"  size="14"/>
+			</sdd:key>
+		</sdd:key>
+
+
+		<sdd:key start-key="080T" name="DISPUTE_CREDIT_TOTAL" label="Crédito por Impugnação" ignorable="yes">
+			<sdd:attribute name="Amount"      start="155"  size="14"/>
+			<sdd:key start-key="080D" name="DISPUTE_CREDIT_DETAIL" description="Detalhes de Créditos e Débitos" >
+				<sdd:attribute name="Amount"      start="127"  size="14"/>
+				<sdd:attribute name="Descricao"   start="155"  size="30"/>
+				<sdd:attribute name="DataElemento" start="275" size="08"/>				
+			</sdd:key>
+		</sdd:key>
+
+<!--
+		<sdd:key start-key="081D" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+		<sdd:key start-key="083D" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+		<sdd:key start-key="084T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+			<sdd:key start-key="084D" name="NOT_DEFINED" description="NOT_DEFINED"/>
+		</sdd:key>
+-->
+		<sdd:key start-key="090T" name="FEDERAL_TAX_TOTAL" description="Total de Impostos Federais" ignorable="yes">
+			<sdd:attribute name="Amount"      start="155"  size="14"/>
+			<sdd:key start-key="090D" name="FEDERAL_TAX_DETAIL" description="Detalhes de Impostos Federais">
+				<sdd:attribute name="Amount"      start="127"  size="14"/>
+				<sdd:attribute name="Descricao"   start="155"  size="30"/>
+			</sdd:key>
+		</sdd:key>
+
+		<sdd:key start-key="095T" name="CONTRACT_CANCEL_TOTAL" label="Cancelamento de Contrato" description="Total de Cancelamento de Contrato" ignorable="yes">
+			<sdd:attribute name="Amount"      start="127"  size="14"/>
+			<sdd:attribute name="Descricao"   start="159"  size="50"/>
+			<sdd:attribute name="DateStart"   start="209"  size="8"/>
+			<sdd:attribute name="DateEnd"     start="217"  size="8"/>
+			<sdd:key start-key="095D" name="CONTRACT_CANCEL_DETAIL" description="Detalhes de Cancelamento de Contrato" />
+		</sdd:key>
+<!--
+		<sdd:key start-key="100T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+			<sdd:key start-key="100D" name="NOT_DEFINED" description="NOT_DEFINED" />
+		</sdd:key>
+
+		<sdd:key start-key="110T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+			<sdd:key start-key="110D" name="NOT_DEFINED" description="NOT_DEFINED" />
+		</sdd:key>
+
+		<sdd:key start-key="120T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+			<sdd:key start-key="120D" name="NOT_DEFINED" description="NOT_DEFINED" />
+		</sdd:key>
+
+		<sdd:key start-key="130T" name="EQUIPMENT_INSTALLMENT_TOTAL" description="Total de Parcelamento de Equipamentos" ignorable="yes">
+			<sdd:attribute name="InstallmentAmount"          start="127"  size="14"/>
+			<sdd:key start-key="130D" name="EQUIPMENT_INSTALLMENT_DETAIL" description="Detalhe de Parcelamento de Equipamentos"/>
+		</sdd:key>
+-->
+		<sdd:key start-key="140T" name="PARCELAMENTO_CONTA_TOTAL" label="Parcelamento de Conta" ignorable="yes">
+			<sdd:attribute name="Amount"      start="155"  size="14"/>
+			<sdd:key start-key="140D" name="PARCELAMENTO_CONTA_DETAIL" description="Parcelamento de Conta" >
+				<sdd:attribute name="Amount"         start="127"  size="14"/>
+				<sdd:attribute name="Descricao"      start="155"  size="50"/>
+			</sdd:key>
+		</sdd:key>
+
+<!--
+		<sdd:key start-key="150W" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+		<sdd:key start-key="160T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+			<sdd:key start-key="160D" name="NOT_DEFINED" description="NOT_DEFINED" />
+		</sdd:key>
+		<sdd:key start-key="160D" name="NOT_DEFINED" description="NOT_DEFINED" />
+-->
+		<sdd:key start-key="199D" end-key="299D" name="DUMMY_INVOICE_SUMMARY" description="Sumário da Fatura">
+			<!--sdd:key start-key="200T" name="ACCOUNT_USAGE_TOTAL" description="Total de Uso da Conta" ignorable="yes">
+				<sdd:attribute name="TotalOCCAmount"      	start="155"  size="14"/>
+				<sdd:attribute name="InvoiceOCCAmount"    	start="169"  size="14"/>
+				<sdd:attribute name="TotOCCLiableSubspAmt"  start="183"  size="14"/>
+				<sdd:attribute name="InvOCCLiableSubspAmt"  start="197"  size="14"/>
+				<sdd:key start-key="200D" name="ACCOUNT_USAGE_DETAIL" description="Detalhe de Uso da Conta">
+					<sdd:attribute name="TotOCCUsageAmount"  start="127"  size="14"/>
+					<sdd:attribute name="InvOCCUsageAmount"  start="141"  size="14"/>
+					<sdd:attribute name="OCCCaptionPhrase"   start="155"  size="50"/>
+					<sdd:attribute name="ItemNO"   			 start="205"  size="4"/>
+					<sdd:attribute name="InitialValueQty"    start="209"  size="14"/>
+					<sdd:attribute name="AdditionalValueQty" start="223"  size="14"/>
+					<sdd:attribute name="OCCRateInitial"     start="237"  size="14"/>
+					<sdd:attribute name="OCCRateAdditional"  start="251"  size="14"/>
+					<sdd:attribute name="OCCRateInfoCode"	 start="265"  size="2"/>
+					<sdd:attribute name="OCCFreeInd"	 	 start="283"  size="1"/>
+
+				</sdd:key>
+			</sdd:key-->
+
+			<sdd:key start-key="202Z" end-key="202A" name="LD_GENERAL_INFO" description="Totais por Operadora" >
+				<sdd:attribute name="LongDistanceCarrierID"          start="127"  size="2"/>
+				<sdd:attribute name="LongDistanceCarrierName"        start="129"  size="50"/>
+				<sdd:attribute name="LongDistanceCarrierStateRegNbr" start="179"  size="10"/>
+				<sdd:attribute name="InvoiceNumber"                  start="189"  size="11"/>
+				<sdd:attribute name="LongDistanceCarrierCNPJ"        start="200"  size="10"/>
+				<sdd:attribute name="LongDistanceCarrierSeries"      start="210"  size="1"/>
+				<sdd:attribute name="InvoiceIssueDate"               start="211"  size="10"/>
+				<sdd:attribute name="MonthCharge"                    start="313"  size="14"/>
+				<sdd:attribute name="InvoiceTotalAmt"                start="327"  size="14"/>
+				<sdd:attribute name="Subscription"                   start="373"  size="14"/>
+				<sdd:attribute name="ActivationFree"                 start="403"  size="14"/>
+				<sdd:attribute name="AditionalServices"              start="433"  size="14"/>
+				<sdd:attribute name="DiscountPromus"                 start="463"  size="14"/>
+				<sdd:attribute name="OtherDebits"                    start="493"  size="14"/>
+				<sdd:attribute name="LocalCalls"                     start="523"  size="14"/>
+				<sdd:attribute name="LocalCollectCalls"              start="553"  size="14"/>
+				<sdd:attribute name="LocalCallsDisc"                 start="583"  size="14"/>
+				<sdd:attribute name="LongDistStates"                 start="613"  size="14"/>
+				<sdd:attribute name="LongDistOthers"                 start="643"  size="14"/>
+				<sdd:attribute name="IntlCalls"                      start="673"  size="14"/>
+				<sdd:attribute name="CollectCalls"                   start="703"  size="14"/>
+				<sdd:attribute name="CallsOriRoaming"                start="733"  size="14"/>
+				<sdd:attribute name="IntlCallRoaming"                start="763"  size="14"/>
+				<sdd:attribute name="CallsRecRoaming"                start="793"  size="14"/>
+				<sdd:attribute name="IntlRoaming"                    start="823"  size="14"/>
+				<sdd:attribute name="AditionalPerCall"               start="853"  size="14"/>
+				<sdd:attribute name="ValueAddService"                start="883"  size="14"/>
+				<sdd:attribute name="DataService"                    start="913"  size="14"/>
+				<sdd:attribute name="ShortMessage"                   start="943"  size="14"/>
+				<sdd:attribute name="ThirdParty"                     start="973"  size="14"/>
+				<sdd:attribute name="InternationalTax"               start="1003" size="14"/>
+				<sdd:attribute name="DataSrv2"                       start="1033" size="14"/>
+				<sdd:attribute name="TotalAmount"                    start="1121" size="11"/>
+				<sdd:attribute name="NonTaxableAmount"               start="1132" size="11"/>
+
+				<sdd:key start-key="202Y" name="SUMMARY_ACCUMULATION_TAXES" description="Sumário de Impostos por Operadora">
+					<sdd:attribute name="TotalAmount"      start="323"  size="14"/>
+					<sdd:attribute name="NonTaxableAmount" start="337"  size="14"/>
+				</sdd:key>
+
+				<sdd:key start-key="202X" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+				<sdd:key start-key="202V" name="ICMS_SUMMARY" description="Sumário de ICMS">
+					<sdd:attribute name="TaxesCaptionPhrase"		start="131"  size="50"/>
+					<sdd:attribute name="TaxesAmt"					start="181"  size="14"/>
+					<sdd:attribute name="BaseCalculo" 				start="209"  size="14"/>
+					<sdd:attribute name="Aliquota" 					start="223"  size="14"/>
+					<sdd:attribute name="IncludedTaxesChargeAmt" 	start="237"  size="14"/>
+				</sdd:key>
+
+				<sdd:key start-key="202T" name="LD_OTHER_DEBIT_TOTAL" description="Outros Débitos e Créditos por Operadora" >
+
+					<sdd:key start-key="202D" name="LD_OTHER_DEBIT_DETAIL" description="Informações de Operadora">
+						<sdd:attribute name="LongDistanceCarrierID"          start="127"  size="2"/>
+						<sdd:attribute name="LongDistanceCarrierName"        start="129"  size="50"/>
+						<sdd:attribute name="LongDistanceCarrierStateRegNbr" start="179"  size="10"/>
+						<sdd:attribute name="InvoiceNumber"                  start="189"  size="11"/>
+						<sdd:attribute name="LongDistanceCarrierCNPJ"        start="200"  size="10"/>
+						<sdd:attribute name="LongDistanceCarrierSeries"      start="210"  size="1"/>
+						<sdd:attribute name="InvoiceIssueDate"               start="211"  size="10"/>
+						<sdd:attribute name="MonthCharge"                    start="313"  size="14"/>
+						<sdd:attribute name="InvoiceTotalAmt"                start="327"  size="14"/>
+						<sdd:attribute name="Subscription"                   start="373"  size="14"/>
+						<sdd:attribute name="ActivationFree"                 start="403"  size="14"/>
+						<sdd:attribute name="AditionalServices"              start="433"  size="14"/>
+						<sdd:attribute name="DiscountPromus"                 start="463"  size="14"/>
+						<sdd:attribute name="OtherDebits"                    start="493"  size="14"/>
+						<sdd:attribute name="LocalCalls"                     start="523"  size="14"/>
+						<sdd:attribute name="LocalCollectCalls"              start="553"  size="14"/>
+						<sdd:attribute name="LocalCallsDisc"                 start="583"  size="14"/>
+						<sdd:attribute name="LongDistStates"                 start="613"  size="14"/>
+						<sdd:attribute name="LongDistOthers"                 start="643"  size="14"/>
+						<sdd:attribute name="IntlCalls"                      start="673"  size="14"/>
+						<sdd:attribute name="CollectCalls"                   start="703"  size="14"/>
+						<sdd:attribute name="CallsOriRoaming"                start="733"  size="14"/>
+						<sdd:attribute name="IntlCallRoaming"                start="763"  size="14"/>
+						<sdd:attribute name="CallsRecRoaming"                start="793"  size="14"/>
+						<sdd:attribute name="IntlRoaming"                    start="823"  size="14"/>
+						<sdd:attribute name="AditionalPerCall"               start="853"  size="14"/>
+						<sdd:attribute name="ValueAddService"                start="883"  size="14"/>
+						<sdd:attribute name="DataService"                    start="913"  size="14"/>
+						<sdd:attribute name="ShortMessage"                   start="943"  size="14"/>
+						<sdd:attribute name="ThirdParty"                     start="973"  size="14"/>
+						<sdd:attribute name="InternationalTax"               start="1003" size="14"/>
+						<sdd:attribute name="DataSrv2"                       start="1033" size="14"/>
+						<sdd:attribute name="TotalAmount"                    start="1121" size="11"/>
+						<sdd:attribute name="NonTaxableAmount"               start="1132" size="11"/>
+					</sdd:key> <!-- 202D -->
+				</sdd:key> <!-- 202T -->
+			</sdd:key> <!-- 202Z LD_GENERAL_INFO -->
+
+			<sdd:key start-key="210T" name="DISCOUNT_TOTAL" description="Total de Descontos e Promoções">
+				<sdd:attribute name="Amount" start="155" size="14"/>
+
+				<sdd:key start-key="210D" name="DISCOUNT_DETAIL" description="Detalhes de Descontos e Promoções">
+					<sdd:attribute name="Amount"      start="127" size="14"/>
+					<sdd:attribute name="Descricao" start="155" size="50"/>
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="220T" name="OTHER_DEBITS_TOTAL" description="Total de Outros Créditos e Débitos">
+				<sdd:attribute name="OtherDebitsSubtotal" start="155" size="14"/>
+
+				<sdd:key start-key="220D" name="OTHER_DEBITS_DETAIL" description="Detalhes de Outros Créditos e Débitos">
+					<sdd:attribute name="OtherDebitsAmount"      start="127" size="14"/>
+					<sdd:attribute name="OtherDebitsDescription" start="155" size="50"/>
+				</sdd:key>
+			</sdd:key>
+
+
+			<!--sdd:key start-key="225W" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+			<sdd:key start-key="230T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+				<sdd:key start-key="230D" name="NOT_DEFINED" description="NOT_DEFINED" />
+			</sdd:key>
+
+			<sdd:key start-key="240T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+				<sdd:key start-key="240D" name="NOT_DEFINED" description="NOT_DEFINED" />
+			</sdd:key>
+			<sdd:key start-key="240D" name="NOT_DEFINED" description="NOT_DEFINED"/>
+			
+			<sdd:key start-key="250T" name="SUBSCRIPTION_SUMMARY" description="Sumário do Celular">
+				<sdd:key start-key="250S" name="SUBSCRIPTION_SUMMARY_CHARGES" description="Resumo dos Gastos">
+					<sdd:attribute name="ServiceChargesAmt"	start="183" size="14"/>
+					<sdd:attribute name="UsageChargesAmt"	start="211" size="14"/>
+					<sdd:attribute name="TotalChargesAmt"	start="267" size="14"/>
+					<sdd:key start-key="250E" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+					<sdd:key start-key="250B" name="SUBSCRIPTION_SUMMARY_GROUP" description="Nome da Assinatura" ignorable="yes">
+						<sdd:attribute name="SummaryGroupName"	start="127" size="35"/>
+						<sdd:attribute name="SubscriptionName"	start="162" size="35"/>
+					</sdd:key>
+				</sdd:key>
+			</sdd:key-->
+
+		</sdd:key>
+
+
+		<sdd:key start-key="300D" end-key="700D" name="SUBSCRIPTION_INFO" description="Informações da Assinatura">
+			<sdd:attribute name="BillDate" 			start="127" size="8"/>
+			<sdd:attribute name="PaymentDueDate"	start="135" size="8"/>
+			<sdd:attribute name="SubscriberName"	start="143" size="35"/>
+			<sdd:attribute name="PhoneNumber"		start="212" size="40"/>
+			<sdd:attribute name="DetailBillInd"		start="252" size="1"/>
+
+			<sdd:key start-key="310D" name="ENTIRE_SUBSCRIPTION_TOTAL" description="Gasto Total do Celular" ignorable="yes">
+				<sdd:attribute name="SubscriptionAmount" start="127" size="14"/>
+				<sdd:key start-key="320T" name="SUBSCRIPTION_SRV_CHARGE_TOTAL" label="Assinatura">
+					<sdd:attribute name="ServiceChargeAmt" start="127" size="14"/>
+					<sdd:key start-key="320D" name="SUBSCRIPTION_SRV_CHARGE_DETAIL" description="Detalhes da Assinatura">
+						<sdd:attribute name="Amount"      	start="127" size="14"/>
+						<sdd:attribute name="ItemNo"		start="155" size="4"/>
+						<sdd:attribute name="Descricao"   	start="159" size="50"/>
+						<sdd:attribute name="StartDate"   	start="209" size="8"/>
+						<sdd:attribute name="EndDate"     	start="217" size="8"/>
+					</sdd:key>
+				</sdd:key>
+			</sdd:key>
+			
+	<!--
+
+			<sdd:key start-key="326S" name="SUBSCRIPTION_IU_TOTAL" ignorable="yes"/>
+			<sdd:key start-key="326D" name="SUBSCRIPTION_IU_DETAIL" ignorable="yes"/>
+			<sdd:key start-key="326B" name="SUBSCRIPTION_IU_HEADER" ignorable="yes"/>
+
+			<sdd:key start-key="326S" name="SUBSCRIPTION_IU_TOTAL" description="Resumo das Unidades Inclusas" ignorable="yes"/>
+			<sdd:key start-key="326D" name="SUBSCRIPTION_IU_DETAIL" description="Detalhe das Unidades Inclusas" ignorable="yes">
+				<sdd:attribute name="AllocationName" start="131" size="30"/>
+				<sdd:attribute name="MaxRollOverUnits" start="171" size="14"/>
+				<sdd:attribute name="RollOverFromPrior" start="185" size="14"/>
+				<sdd:attribute name="TotalIncludedUnits" start="199" size="14"/>
+				<sdd:attribute name="IUFromDate" start="213" size="8"/>
+				<sdd:attribute name="IUToDate" start="221" size="8"/>
+				<sdd:attribute name="UsedIncludedUnitsBySub" start="229" size="14"/>
+				<sdd:attribute name="UsedIncludedUnitsByAcc" start="243" size="14"/>
+				<sdd:attribute name="NotUsedIncludedUnits" start="257" size="14"/>
+				<sdd:attribute name="RollOverIUNext" start="271" size="14"/>
+				<sdd:attribute name="IUPeriodInd" start="285" size="1"/>
+				<sdd:attribute name="IUSharingInd" start="286" size="1"/>
+				<sdd:attribute name="IUPriorUsed" start="327" size="14"/>
+				<sdd:attribute name="BonusIndicator" start="341" size="1"/>
+			</sdd:key>
+			<sdd:key start-key="326B" name="SUBSCRIPTION_IU_HEADER" description="Cabeçalho das Unidades Inclusas" ignorable="yes"/>
+			-->
+
+			<sdd:key start-key="330T" name="ACTIVATION_TOTAL" label="Habilitação">
+				<sdd:attribute name="ServiceChargeAmt" start="127" size="14"/>
+
+				<sdd:key start-key="330D" name="ACTIVATION_DETAIL" description="Detalhes Habilitação">
+					<sdd:attribute name="Amount"  	 	start="127" size="14"/>
+					<sdd:attribute name="ItemNo"			      	start="155" size="4"/>
+					<sdd:attribute name="Descricao" 	start="159" size="50"/>
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="340T" name="ADDITIONAL_SERVICES_TOTAL" label="Serviços Adicionais e Facilidades">
+				<sdd:attribute name="ServiceChargeAmt" start="127" size="14"/>
+
+				<sdd:key start-key="340D" name="ADDITIONAL_SERVICES_DETAIL" description="Detalhes dos Serviços Adicionais e Facilidades">
+					<sdd:attribute name="Amount"       start="127" size="14"/>
+					<sdd:attribute name="ItemNo"			      		start="155" size="4"/>
+					<sdd:attribute name="Descricao"  start="159" size="50"/>
+					<sdd:attribute name="AdditionalServiceStartDate"    start="209" size="8"/>
+					<sdd:attribute name="AdditionalServiceEndDate"      start="217" size="8"/>
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="350T" name="PROMOTIONS_TOTAL" label="Descontos e Promoções">
+				<sdd:attribute name="ServiceChargeAmt" start="127" size="14"/>
+
+				<sdd:key start-key="350D" name="PROMOTIONS_DETAIL" description="Detalhes dos Descontos e Promoções">
+					<sdd:attribute name="Amount"      start="129" size="14"/>
+					<sdd:attribute name="ItemNo"			   start="157" size="4"/>
+					<sdd:attribute name="Descricao" start="161" size="50"/>
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="360T" name="OTHER_DEBITS_TOTAL" label="Outros Créditos e Débitos">
+				<sdd:attribute name="ServiceChargeAmt" start="127" size="14"/>
+
+				<sdd:key start-key="360D" name="OTHER_DEBITS_DETAIL" description="Detalhes de Outros Créditos e Débitos">
+					<sdd:attribute name="Amount"      start="127" size="14"/>
+					<sdd:attribute name="ItemNo"			    start="157" size="4"/>
+					<sdd:attribute name="Descricao" start="161" size="50"/>
+				</sdd:key>
+			</sdd:key>
+<!--
+			<sdd:key start-key="370T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+				<sdd:key start-key="370D" name="NOT_DEFINED" description="NOT_DEFINED" />
+			</sdd:key>
+
+			<sdd:key start-key="380T" name="SUBSCRIBER_LEVEL_CHARGES_TOTAL" description="Sumário de Gastos por Assinatura" ignorable="yes">
+				<sdd:key start-key="380D" name="SUBSCRIBER_LEVEL_CHARGES_DETAIL" description="Detalhe de Gastos por Assinatura" >
+					<sdd:attribute name="ChannelID"        start="31" size="10"/>
+					<sdd:attribute name="ChargeAmount"     start="129" size="14"/>
+     				<sdd:attribute name="ItemNo"           start="157" size="4"/>
+					<sdd:attribute name="ChargeDesc"       start="161" size="50"/>
+					<sdd:attribute name="QtdeEventos"      start="211" size="14"/>
+					<sdd:attribute name="UnidadesCobradas" start="225" size="14"/>
+					<sdd:attribute name="FreeIndicator"    start="269" size="1"/>
+				</sdd:key>
+			</sdd:key>
+
+			<sdd:key start-key="385W" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes"/>
+
+			<sdd:key start-key="390T" name="NOT_DEFINED" description="NOT_DEFINED" ignorable="yes">
+				<sdd:key start-key="390D" name="NOT_DEFINED" description="NOT_DEFINED" />
+			</sdd:key>
+-->
+			<!--sdd:key start-key="399D" end-key="699D" name="OPERATOR_CALL" description="Detalhamento de Chamadas"-->
+
+				<sdd:key start-key="510T" name="LOCAL_CALLS_TOTAL" label="Chamadas Locais" >
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"    start="202" size="14"/>
+					<sdd:attribute name="BilledUnits" start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"   start="412" size="14"/>
+					<sdd:attribute name="Subtotal"       start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"    start="482" size="35"/>
+		
+
+					<sdd:key start-key="510D" name="LOCAL_CALLS_DETAIL" description="Uso Local Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       	   start="973" size="35"/>
+					</sdd:key>
+					
+				</sdd:key>
+
+				<sdd:key start-key="520T" name="LOCAL_COLLECT_CALLS_TOTAL" label="Chamadas Locais - À Cobrar">
+					<sdd:attribute name="GroupID"        start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"    start="202" size="14"/>
+					<sdd:attribute name="BilledUnits" start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"   start="412" size="14"/>
+					<sdd:attribute name="Subtotal"       start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"    start="482" size="35"/>
+
+					<sdd:key start-key="520D" name="LOCAL_COLLECT_CALLS_DETAIL" description="Uso Local À Cobrar Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>				
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       	   start="973" size="35"/>
+					</sdd:key>
+			
+				</sdd:key>
+
+				<sdd:key start-key="530T" name="LOCAL_CALLS_DISCOUNTED_TOTAL" label="Chamadas Locais com Desconto">
+					<sdd:attribute name="GroupID"        start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"    start="202" size="14"/>
+					<sdd:attribute name="BilledUnits" start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"   start="412" size="14"/>
+					<sdd:attribute name="Subtotal"       start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"    start="482" size="35"/>
+					<sdd:key start-key="530D" name="LOCAL_CALLS_DISCOUNTED_DETAIL" description="Uso Local com Desconto Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       	   start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="540T" name="LD_INTRASTATE_CALLS_TOTAL" label="Chamadas de Longa Distância dentro do Estado">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal"    		start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" 		start="482" size="35"/>
+					<sdd:key start-key="540D" name="LD_INTRASTATE_CALLS_DETAIL" description="Chamadas de Longa Distância dentro do Estado - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>
+	 					<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       		start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="550T" name="LD_INTERSTATE_CALLS_TOTAL" label="Chamadas de Longa Distância para Outros Estados">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal"    		start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" 		start="482" size="35"/>
+					<sdd:key start-key="550D" name="LD_INTERSTATE_CALLS_DETAIL" description="Chamadas de Longa Distância para Outros Estados - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>					
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"      		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       		start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="560T" name="INTERNATIONAL_CALLS_TOTAL" label="Chamadas Internacionais">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal" start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" 		start="482" size="35"/>					
+					<sdd:key start-key="560D" name="INTERNATIONAL_CALLS_DETAIL" description="Chamadas Internacionais - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"      		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>						
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+						<sdd:attribute name="Origin"       	   start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="570T" name="COLLECT_CALLS_TOTAL" label="Chamadas Recebidas a Cobrar - Exceto Locais">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>						
+					<sdd:attribute name="Subtotal" 			start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" 		start="482" size="35"/>
+					<sdd:key start-key="570D" name="COLLECT_CALLS_DETAIL" description="Chamadas Recebidas a Cobrar - Exceto Locais - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  		start="448" size="20"/>
+						<sdd:attribute name="Amount"      		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="CallDirection"    start="903" size="1"/>
+						<sdd:attribute name="CalIndicator" 	   start="938" size="1"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="580T" name="ROAM_MOC_TOTAL" label="Chamadas Originadas em Roaming">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>						
+					<sdd:attribute name="Subtotal" 			start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"  		start="482" size="35"/>
+					<sdd:key start-key="580D" name="ROAM_MOC_DETAIL" description="Chamadas Originadas Em Roaming - Detalhado">
+						<sdd:attribute name="Carrier"      		start="65"  size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="ServicePrice"      start="133" size="20"/>
+						<sdd:attribute name="Date"        		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"     	start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" 		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="Origin"       		start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="590T" name="ROAM_MOC_INTERNATIONAL_TOTAL" label="Chamadas Internacionais em Roaming Nacional">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal" start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"  		start="482" size="35"/>					
+					<sdd:key start-key="590D" name="ROAM_MOC_INTERNATIONAL_DETAIL" description="Chamadas Internacionais (Roaming Nacional) - Detalhadp">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"     	start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled"		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="Origin"       		start="973" size="35"/>
+					</sdd:key>					
+				</sdd:key>
+
+				<sdd:key start-key="600T" name="ROAM_MTC_TOTAL" label="Chamadas Recebidas em Roaming">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>	
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal" 			start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"  		start="482" size="35"/>
+					<sdd:key start-key="600D" name="ROAM_MTC_DETAIL" description="Chamadas Recebidas em Roaming - Detalhado">
+						<sdd:attribute name="Carrier"      		start="65"  size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="Date"         		start="238" size="8"/>
+						<sdd:attribute name="Time"         		start="273" size="8"/>
+						<sdd:attribute name="Duration"     		start="308" size="14"/>
+						<sdd:attribute name="Tariff"       		start="413" size="2"/>
+						<sdd:attribute name="ServicePlan" 		start="448" size="20"/>
+						<sdd:attribute name="Amount"       		start="518" size="14"/>
+						<sdd:attribute name="NumberCalled"		start="728" size="20"/>
+						<sdd:attribute name="Destination"  		start="763" size="35"/>
+						<sdd:attribute name="Origin"     		start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="610T" name="ROAM_MTC_INTERNATIONAL_TOTAL" label="Chamadas Originadas/Recebidas em Roaming Internacional">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="UnitsDescription"  start="132" size="10"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal" 			start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"  		start="482" size="35"/>
+					<sdd:key start-key="610D" name="ROAM_MTC_INTERNATIONAL_DETAIL" description="Roaming Internacional - Detalhado">
+						<sdd:attribute name="Carrier"      start="65"  size="20"/>
+						<sdd:attribute name="Date"         start="238" size="8"/>
+						<sdd:attribute name="Time"         start="273" size="8"/>
+						<sdd:attribute name="Duration"     start="308" size="14"/>
+						<sdd:attribute name="Tariff"       start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  start="448" size="20"/>
+						<sdd:attribute name="Amount"       start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" start="728" size="20"/>
+						<sdd:attribute name="Destination"  start="763" size="35"/>
+						<sdd:attribute name="Origin"       start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="620T" name="VAS_TOTAL" label="Serviço de Valor Agregado">
+					<sdd:attribute name="GroupID"     start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>											
+					<sdd:attribute name="Subtotal"    start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" start="482" size="35"/>
+					<sdd:key start-key="620D" name="VAS_DETAIL" description="Serviço de Valor Agregado - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="Date"         start="238" size="8"/>
+						<sdd:attribute name="Time"         start="273" size="8"/>
+						<sdd:attribute name="Duration"     start="308" size="14"/>
+						<sdd:attribute name="ServicePlan"  start="448" size="20"/>
+						<sdd:attribute name="Amount"       start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" start="728" size="20"/>
+						<sdd:attribute name="Destination"  start="763" size="35"/>
+						<sdd:attribute name="Origin"       start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="630T" name="AD_TOTAL" label="Adicional de Chamada">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>	
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>											
+					<sdd:attribute name="Subtotal"    start="447" size="14"/>
+					<sdd:attribute name="ServicePlan" start="482" size="35"/>					
+					<sdd:key start-key="630D" name="AD_DETAIL" description="Adicional de Chamada - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>
+						<sdd:attribute name="Date"         start="238" size="8"/>
+						<sdd:attribute name="Time"         start="273" size="8"/>
+						<sdd:attribute name="Duration"     start="308" size="14"/>
+						<sdd:attribute name="Description"  start="448" size="20"/>
+						<sdd:attribute name="ServicePlan"  start="448" size="20"/>
+						<sdd:attribute name="Amount"       start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" start="728" size="20"/>
+						<sdd:attribute name="Destination"  start="763" size="35"/>
+						<sdd:attribute name="Origin"       start="973" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="640T" name="DATA_2G_TOTAL" label="Serviço de Dados - 2G">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>					
+					<sdd:attribute name="Subtotal"          start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"       start="482" size="35"/>
+					<sdd:key start-key="640D" name="DATA_2G_DETAIL" description="Serviço de Dados - 2G - Detalhado">
+						<sdd:attribute name="GroupID"     start="65" size="20"/>
+						<sdd:attribute name="LDCarrierCode"     start="125" size="2"/>
+						<sdd:attribute name="ServicePrice"      start="133" size="20"/>
+						<sdd:attribute name="Date"         start="238" size="8"/>
+						<sdd:attribute name="Time"         start="273" size="8"/>
+						<sdd:attribute name="Duration"     start="308" size="14"/>
+						<sdd:attribute name="Tariff"       start="413" size="2"/>
+						<sdd:attribute name="ServicePlan"  start="448" size="20"/>
+						<sdd:attribute name="Amount"       start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" start="728" size="20"/>
+						<sdd:attribute name="Origin"       start="763" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="645T" name="DATA_3G1X_TOTAL" label="Serviço de Dados - 1xRTT">
+					<sdd:attribute name="GroupID"           start="65"  size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>						
+					<sdd:attribute name="Subtotal"          start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"       start="482" size="35"/>
+					<sdd:key start-key="645D" name="DATA_3G1X_DETAIL" description="Serviço de Dados - 1xRTT - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>	
+						<sdd:attribute name="Date"        start="238" size="8"/>
+						<sdd:attribute name="Time"        start="273" size="8"/>
+						<sdd:attribute name="Unit"        start="343" size="20"/>
+						<sdd:attribute name="Tariff"      start="413" size="2"/>
+						<sdd:attribute name="ServicePlan" start="448" size="20"/>
+						<sdd:attribute name="Amount"      start="483" size="14"/>
+						<sdd:attribute name="Destination" start="728" size="35"/>
+						<sdd:attribute name="NumberCalled" start="728" size="35"/>
+						<sdd:attribute name="Quantity"    start="763" size="14"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="650T" name="SMS_TOTAL" label="Short Message">
+					<sdd:attribute name="GroupID"  start="65"  size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="FreeMessages"    start="202" size="14"/>
+					<sdd:attribute name="ChargedMessages" start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"    start="412" size="14"/>
+					<sdd:attribute name="Subtotal"        start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"     start="482" size="35"/>
+					<sdd:key start-key="650D" name="SMS_DETAIL" description="Short Message - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>	
+						<sdd:attribute name="Date"        start="238" size="8"/>
+						<sdd:attribute name="Time"        start="273" size="8"/>
+						<sdd:attribute name="ServicePlan" start="448" size="20"/>
+						<sdd:attribute name="Amount"      start="518" size="14"/>
+						<sdd:attribute name="NumberCalled"     start="657" size="20"/>
+						<sdd:attribute name="Destination"      start="692" size="35"/>
+					</sdd:key>
+				</sdd:key>
+
+				<sdd:key start-key="660T" name="PARTY_3RD_TOTAL" label="Serviço Prestado por Terceiros">
+					<sdd:attribute name="GroupID"           start="65" size="20"/>
+					<sdd:attribute name="CarrierCode"       start="125" size="2"/>					
+					<sdd:attribute name="FreeMinutes"       start="202" size="14"/>
+					<sdd:attribute name="BilledUnits"    start="307" size="14"/>
+					<sdd:attribute name="UsedUnits"      start="412" size="14"/>	
+					<sdd:attribute name="Subtotal"          start="447" size="14"/>
+					<sdd:attribute name="ServicePlan"     start="482" size="35"/>					
+					<sdd:key start-key="660D" name="PARTY_3RD_DETAIL" description="Serviço Prestado por Terceiros - Detalhado">
+						<sdd:attribute name="GroupID"           start="65" size="20"/>	
+						<sdd:attribute name="Date"         start="238" size="8"/>
+						<sdd:attribute name="Time"         start="273" size="8"/>
+						<sdd:attribute name="Duration"     start="308" size="14"/>
+						<sdd:attribute name="ServicePlan"  start="448" size="20"/>
+						<sdd:attribute name="Amount"       start="518" size="14"/>
+						<sdd:attribute name="NumberCalled" start="728" size="20"/>
+						<sdd:attribute name="Destination"  start="763" size="35"/>
+					</sdd:key>
+				</sdd:key>
+			</sdd:key>
+		<!--/sdd:key-->
+	</sdd:key>
+</sdd:document>
